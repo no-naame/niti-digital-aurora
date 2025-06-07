@@ -1,212 +1,273 @@
 
-const Services = () => {
-  const services = [
-    {
-      icon: '💻',
-      title: 'Web Development',
-      description: 'Custom websites and web applications built with modern technologies',
-      features: ['React & Vue.js', 'Node.js Backend', 'Responsive Design']
-    },
-    {
-      icon: '📱',
-      title: 'Mobile Apps',
-      description: 'Native and cross-platform mobile applications for iOS and Android',
-      features: ['React Native', 'Flutter', 'Native Development']
-    },
-    {
-      icon: '🎨',
-      title: 'UI/UX Design',
-      description: 'User-centered design that delivers exceptional digital experiences',
-      features: ['Figma Design', 'Prototyping', 'User Research']
-    },
-    {
-      icon: '☁️',
-      title: 'Cloud Solutions',
-      description: 'Scalable cloud infrastructure and deployment solutions',
-      features: ['AWS & Azure', 'DevOps', 'Microservices']
-    },
-    {
-      icon: '🚀',
-      title: 'Digital Strategy',
-      description: 'Comprehensive digital transformation consulting and strategy',
-      features: ['Technology Audit', 'Strategic Planning', 'Implementation']
-    },
-    {
-      icon: '🔧',
-      title: 'Support & Maintenance',
-      description: 'Ongoing support and maintenance for your digital products',
-      features: ['24/7 Support', 'Regular Updates', 'Performance Monitoring']
-    }
-  ];
+import React from "react";
+import { Box, Lock, Search, Settings, Sparkles } from "lucide-react";
+import { GlowingEffect } from "./ui/glowing-effect.jsx";
 
+const gridItems = [
+  {
+    areaClass: "grid-area-1",
+    icon: <Box className="icon" />,
+    title: "Web Development",
+    description: "Custom websites and web applications built with modern technologies",
+  },
+  {
+    areaClass: "grid-area-2",
+    icon: <Settings className="icon" />,
+    title: "Mobile Apps",
+    description: "Native and cross-platform mobile applications for iOS and Android",
+  },
+  {
+    areaClass: "grid-area-3",
+    icon: <Lock className="icon" />,
+    title: "UI/UX Design",
+    description: "User-centered design that delivers exceptional digital experiences",
+  },
+  {
+    areaClass: "grid-area-4",
+    icon: <Sparkles className="icon" />,
+    title: "Cloud Solutions",
+    description: "Scalable cloud infrastructure and deployment solutions",
+  },
+  {
+    areaClass: "grid-area-5",
+    icon: <Search className="icon" />,
+    title: "Digital Strategy",
+    description: "Comprehensive digital transformation consulting and strategy",
+  },
+];
+
+const Services = () => {
   return (
-    <section className="services section animate-on-scroll" id="about">
+    <section className="services section animate-on-scroll" id="services">
       <div className="container">
         <div className="section-header">
           <h2>What We Do</h2>
           <p>We craft digital solutions that empower businesses and transform ideas into reality</p>
         </div>
 
-        <div className="services-grid">
-          {services.map((service, index) => (
-            <div key={index} className={`service-card animate-on-scroll stagger-${(index % 6) + 1}`}>
-              <div className="service-icon">
-                <span>{service.icon}</span>
-              </div>
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-              <ul className="service-features">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex}>{feature}</li>
-                ))}
-              </ul>
-              <div className="service-hover-effect"></div>
-            </div>
+        <ul className="grid-container">
+          {gridItems.map((item, index) => (
+            <GridItem
+              key={index}
+              areaClass={item.areaClass}
+              icon={item.icon}
+              title={item.title}
+              description={item.description}
+            />
           ))}
-        </div>
+        </ul>
       </div>
-
-      <style jsx>{`
-        .services {
-          position: relative;
-        }
-
-        .section-header {
-          text-align: center;
-          margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-          color: var(--text-primary);
-          margin-bottom: 1rem;
-        }
-
-        .section-header p {
-          color: var(--text-secondary);
-          font-size: 1.1rem;
-          max-width: 600px;
-          margin: 0 auto;
-        }
-
-        .services-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-        }
-
-        .service-card {
-          background: rgba(255, 255, 255, 0.03);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 20px;
-          padding: 2.5rem;
-          position: relative;
-          transition: var(--transition-smooth);
-          overflow: hidden;
-          cursor: pointer;
-        }
-
-        .service-card:hover {
-          background: rgba(255, 255, 255, 0.08);
-          transform: translateY(-10px);
-          border-color: var(--primary-accent);
-        }
-
-        .service-card:hover .service-hover-effect {
-          opacity: 1;
-          transform: scale(1);
-        }
-
-        .service-hover-effect {
-          position: absolute;
-          top: -50%;
-          right: -50%;
-          width: 100%;
-          height: 100%;
-          background: radial-gradient(circle, var(--primary-accent) 0%, transparent 70%);
-          opacity: 0;
-          transform: scale(0.5);
-          transition: var(--transition-smooth);
-          pointer-events: none;
-          z-index: 0;
-        }
-
-        .service-icon {
-          width: 70px;
-          height: 70px;
-          background: linear-gradient(135deg, var(--primary-accent), var(--hover-highlight));
-          border-radius: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 2rem;
-          margin-bottom: 1.5rem;
-          transition: var(--transition-smooth);
-          position: relative;
-          z-index: 1;
-        }
-
-        .service-card:hover .service-icon {
-          transform: scale(1.1) rotate(5deg);
-        }
-
-        .service-card h3 {
-          color: var(--text-primary);
-          margin-bottom: 1rem;
-          position: relative;
-          z-index: 1;
-        }
-
-        .service-card p {
-          color: var(--text-secondary);
-          margin-bottom: 1.5rem;
-          line-height: 1.6;
-          position: relative;
-          z-index: 1;
-        }
-
-        .service-features {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          position: relative;
-          z-index: 1;
-        }
-
-        .service-features li {
-          color: var(--text-secondary);
-          font-size: 0.9rem;
-          margin-bottom: 0.5rem;
-          padding-left: 1rem;
-          position: relative;
-          transition: var(--transition-smooth);
-        }
-
-        .service-features li::before {
-          content: '✓';
-          position: absolute;
-          left: 0;
-          color: var(--success);
-          font-weight: bold;
-        }
-
-        .service-card:hover .service-features li {
-          color: var(--text-primary);
-        }
-
-        @media (max-width: 768px) {
-          .services-grid {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-          }
-
-          .service-card {
-            padding: 2rem;
-          }
-        }
-      `}</style>
     </section>
   );
 };
 
+const GridItem = ({ areaClass, icon, title, description }) => {
+  return (
+    <li className={`grid-item ${areaClass}`}>
+      <div className="item-wrapper">
+        <GlowingEffect
+          spread={40}
+          glow={true}
+          disabled={false}
+          proximity={64}
+          inactiveZone={0.01}
+        />
+        <div className="content-wrapper">
+          <div className="content">
+            <div className="icon-wrapper">{icon}</div>
+            <div className="text-container">
+              <h3 className="title">{title}</h3>
+              <h2 className="description">{description}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  );
+};
+
 export default Services;
+
+// Add the CSS styles
+const styles = `
+  .services {
+    position: relative;
+    padding: var(--section-padding);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-header h2 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+
+  .section-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Grid Container */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .grid-container {
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(3, auto);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .grid-container {
+      max-height: 34rem;
+      grid-template-rows: repeat(2, 1fr);
+    }
+  }
+
+  /* Grid Area Assignments */
+  @media (min-width: 768px) {
+    .grid-area-1 { grid-area: 1 / 1 / 2 / 7; }
+    .grid-area-2 { grid-area: 1 / 7 / 2 / 13; }
+    .grid-area-3 { grid-area: 2 / 1 / 3 / 7; }
+    .grid-area-4 { grid-area: 2 / 7 / 3 / 13; }
+    .grid-area-5 { grid-area: 3 / 1 / 4 / 13; }
+  }
+
+  @media (min-width: 1280px) {
+    .grid-area-1 { grid-area: 1 / 1 / 2 / 5; }
+    .grid-area-2 { grid-area: 2 / 1 / 3 / 5; }
+    .grid-area-3 { grid-area: 1 / 5 / 3 / 8; }
+    .grid-area-4 { grid-area: 1 / 8 / 2 / 13; }
+    .grid-area-5 { grid-area: 2 / 8 / 3 / 13; }
+  }
+
+  /* Grid Item */
+  .grid-item {
+    min-height: 14rem;
+    list-style: none;
+  }
+
+  .item-wrapper {
+    position: relative;
+    height: 100%;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+  }
+
+  .item-wrapper:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary-accent);
+    transform: translateY(-5px);
+  }
+
+  @media (max-width: 767px) {
+    .item-wrapper {
+      border-radius: 1rem;
+      padding: 0.5rem;
+    }
+  }
+
+  .content-wrapper {
+    position: relative;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 0.75px solid transparent;
+  }
+
+  .content {
+    position: relative;
+    display: flex;
+    flex: 1 1 0%;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .icon-wrapper {
+    width: fit-content;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    transition: var(--transition-smooth);
+  }
+
+  .item-wrapper:hover .icon-wrapper {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+  }
+
+  .icon {
+    height: 1rem;
+    width: 1rem;
+    color: var(--primary-accent);
+  }
+
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .title {
+    padding-top: 2px;
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    line-height: 1.375rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .description {
+    font-family: var(--font-secondary);
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .title {
+      font-size: 1.5rem;
+      line-height: 1.875rem;
+    }
+    .description {
+      font-size: 1rem;
+      line-height: 1.375rem;
+    }
+    .description b,
+    .description strong {
+      font-weight: 600;
+    }
+  }
+`;
+
+// Inject styles
+if (typeof document !== 'undefined') {
+  const styleSheet = document.createElement("style");
+  styleSheet.innerText = styles;
+  document.head.appendChild(styleSheet);
+}
