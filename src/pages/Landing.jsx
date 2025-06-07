@@ -31,14 +31,14 @@ const Landing = () => {
     };
 
     const handleMouseEnter = (e) => {
-      if (e.target && typeof e.target.closest === 'function' && e.target.closest('.btn, .nav-link, .social-link, a')) {
+      if (e.target.closest('.btn, .nav-link, .social-link, a')) {
         if (cursorRef.current) cursorRef.current.style.transform = 'scale(1.5)';
         if (followerRef.current) followerRef.current.style.transform = 'scale(1.2)';
       }
     };
 
     const handleMouseLeave = (e) => {
-      if (e.target && typeof e.target.closest === 'function' && e.target.closest('.btn, .nav-link, .social-link, a')) {
+      if (e.target.closest('.btn, .nav-link, .social-link, a')) {
         if (cursorRef.current) cursorRef.current.style.transform = 'scale(1)';
         if (followerRef.current) followerRef.current.style.transform = 'scale(1)';
       }
