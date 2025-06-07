@@ -46,32 +46,13 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
-  cursor: none;
+  cursor: default;
 }
 
-/* Custom Cursor */
-.cursor {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  background: var(--primary-accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.1s ease;
-  mix-blend-mode: difference;
-}
-
+/* Simple Cursor - no custom cursor effects */
+.cursor,
 .cursor-follower {
-  position: fixed;
-  width: 40px;
-  height: 40px;
-  border: 2px solid var(--primary-accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transition: all 0.3s ease;
-  opacity: 0.5;
+  display: none;
 }
 
 /* Typography */
@@ -350,9 +331,9 @@ p {
   pointer-events: none;
 }
 
-/* Custom Scrollbar */
+/* Simple Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -360,10 +341,10 @@ p {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-accent);
-  border-radius: 4px;
+  background: var(--border-color);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--hover-highlight);
+  background: var(--primary-accent);
 }

@@ -93,17 +93,31 @@ const Hero = () => {
         </div>
         
         <div className="hero-visual animate-fade-right stagger-3">
-          <div className="floating-card card-1 animate-float">
-            <div className="card-icon">💻</div>
-            <div className="card-text">Web Development</div>
-          </div>
-          <div className="floating-card card-2 animate-float">
-            <div className="card-icon">📱</div>
-            <div className="card-text">Mobile Apps</div>
-          </div>
-          <div className="floating-card card-3 animate-float">
-            <div className="card-icon">🎨</div>
-            <div className="card-text">UI/UX Design</div>
+          <div className="tech-grid">
+            <div className="tech-item tech-1">
+              <div className="tech-icon">💻</div>
+              <div className="tech-label">Web Dev</div>
+            </div>
+            <div className="tech-item tech-2">
+              <div className="tech-icon">📱</div>
+              <div className="tech-label">Mobile</div>
+            </div>
+            <div className="tech-item tech-3">
+              <div className="tech-icon">🎨</div>
+              <div className="tech-label">Design</div>
+            </div>
+            <div className="tech-item tech-4">
+              <div className="tech-icon">☁️</div>
+              <div className="tech-label">Cloud</div>
+            </div>
+            <div className="tech-item tech-5">
+              <div className="tech-icon">🔒</div>
+              <div className="tech-label">Security</div>
+            </div>
+            <div className="tech-item tech-6">
+              <div className="tech-icon">⚡</div>
+              <div className="tech-label">Performance</div>
+            </div>
           </div>
         </div>
       </div>
@@ -258,48 +272,50 @@ const Hero = () => {
           position: relative;
           height: 500px;
           opacity: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        .floating-card {
-          position: absolute;
+        .tech-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+          width: 100%;
+          max-width: 400px;
+        }
+
+        .tech-item {
           background: rgba(255, 255, 255, 0.05);
           backdrop-filter: blur(10px);
           border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 15px;
-          padding: 1.5rem;
+          padding: 1.5rem 1rem;
           text-align: center;
-          transition: var(--transition-smooth);
+          transition: all 0.3s ease;
+          cursor: pointer;
         }
 
-        .floating-card:hover {
-          transform: translateY(-10px) scale(1.05);
+        .tech-item:hover {
+          transform: translateY(-5px) scale(1.05);
           background: rgba(255, 255, 255, 0.1);
+          border-color: var(--primary-accent);
         }
 
-        .card-1 {
-          top: 20%;
-          left: 10%;
-          animation-delay: 0.5s;
-        }
+        .tech-1 { animation: float 3s ease-in-out infinite 0s; }
+        .tech-2 { animation: float 3s ease-in-out infinite 0.5s; }
+        .tech-3 { animation: float 3s ease-in-out infinite 1s; }
+        .tech-4 { animation: float 3s ease-in-out infinite 1.5s; }
+        .tech-5 { animation: float 3s ease-in-out infinite 2s; }
+        .tech-6 { animation: float 3s ease-in-out infinite 2.5s; }
 
-        .card-2 {
-          top: 50%;
-          right: 20%;
-          animation-delay: 1s;
-        }
-
-        .card-3 {
-          bottom: 20%;
-          left: 30%;
-          animation-delay: 1.5s;
-        }
-
-        .card-icon {
-          font-size: 2rem;
+        .tech-icon {
+          font-size: 1.5rem;
           margin-bottom: 0.5rem;
         }
 
-        .card-text {
+        .tech-label {
+          font-size: 0.8rem;
           font-weight: 500;
           color: var(--text-primary);
         }
@@ -330,8 +346,14 @@ const Hero = () => {
             order: -1;
           }
 
-          .floating-card {
-            padding: 1rem;
+          .tech-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-width: 280px;
+          }
+
+          .tech-item {
+            padding: 1rem 0.5rem;
           }
         }
       `}</style>

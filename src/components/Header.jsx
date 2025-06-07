@@ -84,7 +84,6 @@ export default function Header() {
         <NavbarLogo />
         <NavItemsDesktop items={navItems} />
         <div className={styles.desktopButtons}>
-          <NavbarButton variant="secondary">Get Quote</NavbarButton>
           <NavbarButton variant="primary">Start Project</NavbarButton>
         </div>
       </motion.div>
@@ -166,9 +165,6 @@ const NavMenuMobile = ({ isOpen, items, onClose }) => (
           </a>
         ))}
         <div className={styles.mobileMenuButtons}>
-          <NavbarButton onClick={onClose} variant="secondary" className={styles.fullWidth}>
-            Get Quote
-          </NavbarButton>
           <NavbarButton onClick={onClose} variant="primary" className={styles.fullWidth}>
             Start Project
           </NavbarButton>
