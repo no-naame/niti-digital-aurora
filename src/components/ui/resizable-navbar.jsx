@@ -1,6 +1,6 @@
 
 import { cn } from "@/lib/utils";
-import { IconMenu2, IconX } from "@tabler/icons-react";
+import { Menu, X } from "lucide-react";
 import {
   motion,
   AnimatePresence,
@@ -166,9 +166,9 @@ export const MobileNavMenu = ({ children, className, isOpen, onClose }) => {
 
 export const MobileNavToggle = ({ isOpen, onClick }) => {
   return isOpen ? (
-    <IconX className="text-black dark:text-white cursor-pointer" onClick={onClick} />
+    <X className="text-black dark:text-white cursor-pointer" onClick={onClick} />
   ) : (
-    <IconMenu2 className="text-black dark:text-white cursor-pointer" onClick={onClick} />
+    <Menu className="text-black dark:text-white cursor-pointer" onClick={onClick} />
   );
 };
 
